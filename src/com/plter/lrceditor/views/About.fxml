@@ -1,0 +1,15 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Hyperlink?>
+<VBox fx:id="root"
+      style="-fx-padding: 10px"
+      spacing="5"
+      alignment="CENTER"
+      fx:controller="com.plter.lrceditor.controllers.AboutViewController"
+      xmlns:fx="http://javafx.com/fxml">
+
+    <Label text="开发者"/>
+    <Hyperlink text="plter" fx:id="lbPlter" onAction="#linkButtonClickedHandler"/>
+    <Hyperlink text="chaoyang805" fx:id="lbChaoyang805" onAction="#linkButtonClickedHandler"/>
+</VBox>
+

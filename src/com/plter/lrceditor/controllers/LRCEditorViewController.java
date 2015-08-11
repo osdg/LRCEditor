@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 /**
  * Created by plter on 7/27/15.
  */
-public class LRCEditorController implements Initializable, ChangeListener<Duration> {
+public class LRCEditorViewController implements Initializable, ChangeListener<Duration> {
     public Button btnInsertTimeTag;
     public TextArea taTextContent;
     public VBox root;
@@ -140,5 +140,9 @@ public class LRCEditorController implements Initializable, ChangeListener<Durati
                 e.printStackTrace();
             }
         }
+    }
+
+    public void btnAboutActionHandler(ActionEvent actionEvent) {
+        AboutViewController.showView(root.getScene().getWindow());
     }
 }

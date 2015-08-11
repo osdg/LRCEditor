@@ -1,6 +1,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<VBox fx:id="root" style="-fx-padding: 10px" spacing="5" fx:controller="com.plter.lrceditor.controllers.LRCEditorController" xmlns:fx="http://javafx.com/fxml">
+<VBox fx:id="root" style="-fx-padding: 10px" spacing="5" fx:controller="com.plter.lrceditor.controllers.LRCEditorViewController" xmlns:fx="http://javafx.com/fxml">
     <HBox spacing="5">
         <Button text="插入时间[00:00]" fx:id="btnInsertTimeTag" onAction="#btnInsertTimeTagActionHandler"/>
         <Button text="打开歌曲" onAction="#btnOpenSongActionHandler"/>
@@ -8,6 +8,8 @@
         <Button text="暂停" fx:id="btnPauseMp3" disable="true" onAction="#btnPauseActionHandler"/>
         <Button text="停止" fx:id="btnStopMp3" disable="true" onAction="#btnStopActionHandler"/>
         <Button text="保存" onAction="#btnSaveLrcActionHandler"/>
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button text="关于" onAction="#btnAboutActionHandler"/>
     </HBox>
 
     <HBox spacing="5" style="-fx-alignment: center-left">
