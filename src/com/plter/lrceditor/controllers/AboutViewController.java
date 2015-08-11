@@ -24,7 +24,7 @@ public class AboutViewController {
 
     static public void showView(Window owner){
         Stage s = new Stage();
-        s.setScene(new Scene(ViewTool.loadView("About.fxml"), 200, 300));
+        s.setScene(new Scene(ViewTool.loadView("About.fxml"), 400, 300));
         s.setTitle("关于该软件");
         s.initOwner(owner);
         s.initModality(Modality.APPLICATION_MODAL);
