@@ -41,7 +41,7 @@ public class LRCEditorViewController implements Initializable, ChangeListener<Du
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setTimeTag("[00:00]");
+        setTimeTag("[00:00.00]");
     }
 
     public void setTimeTag(String timeTag) {
@@ -111,8 +111,8 @@ public class LRCEditorViewController implements Initializable, ChangeListener<Du
 
     @Override
     public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-        setTimeTag(String.format("[%02d:%02d]", (int) newValue.toMinutes(), ((int) newValue.toSeconds()) % 60));
-
+        setTimeTag(String.format("[%02d:%02d.%02d]", (int) newValue.toMinutes(), ((int) newValue.toSeconds()) % 60,
+                (int) (newValue.toMillis() % 1000 / 10)));
         if (lrc != null) {
             String content = lrc.getContent((int) newValue.toSeconds());
             if (content != null) {
@@ -125,11 +125,11 @@ public class LRCEditorViewController implements Initializable, ChangeListener<Du
         FileChooser fc = new FileChooser();
         String title = tfSongTitle.getText();
         String artist = tfSongArtist.getText();
-        if (!title.isEmpty() | !artist.isEmpty()) {
-            taTextContent.insertText(0, String.format("[ti:%s]\n[ar:%s]\n", title, artist));
-        }
+        taTextContent.insertText(0, artist.isEmpty() ? "" : String.format("[ar:%s]\n", artist));
+        taTextContent.insertText(0, artist.isEmpty() ? "" : String.format("[ti:%s]\n", title));
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("LRC文件(*.lrc)", "*.lrc"));
         fc.setTitle("保存Lrc文件");
+        fc.setInitialFileName(tfSongTitle.getText() == null ? ".lrc" : tfSongTitle.getText() + ".lrc");
         File f = fc.showSaveDialog(root.getScene().getWindow());
         if (f != null) {
             try {
